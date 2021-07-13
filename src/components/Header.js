@@ -2,11 +2,18 @@ import React from "react";
 import styled from "styled-components";
 import SearchIcon from "@material-ui/icons/Search";
 import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
+import { Link } from "react-router-dom";
+import { useStateValue } from "../features/StateProvider";
 
 function Header(props) {
+  const [{ basket }, dispatch] = useStateValue();
+
   return (
     <Heading>
-      <HeaderLogo />
+      <Link to="/">
+        <HeaderLogo />
+      </Link>
+
       <HeaderSearch>
         <HeaderSearchInput type="text" />
         <SearchIcon className="header__searchIcon"></SearchIcon>
@@ -27,11 +34,12 @@ function Header(props) {
           <OptionLineOne>Your</OptionLineOne>
           <OptionLineTwo>Prime</OptionLineTwo>
         </HeaderOption>
-
-        <HeaderOptionBasket>
-          <ShoppingBasketIcon />
-          <HeaderBasketCount>0</HeaderBasketCount>
-        </HeaderOptionBasket>
+        <Link to="/checkout">
+          <HeaderOptionBasket>
+            <ShoppingBasketIcon />
+            <HeaderBasketCount>{basket?.length}</HeaderBasketCount>
+          </HeaderOptionBasket>
+        </Link>
       </HeaderNav>
     </Heading>
   );
