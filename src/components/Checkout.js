@@ -54,7 +54,8 @@ const BannerImage = styled.img`
 
 const H2Title = styled.h2`
   margin-right: 10px;
-  padding 10px;
-  border-bottom: 1px solid lightgray;`;
+  padding: 10px;
+  border-bottom: 1px solid lightgray;
+`;
 
 const RightCheckout = styled.div``;
