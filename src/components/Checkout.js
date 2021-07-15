@@ -3,7 +3,6 @@ import styled from "styled-components";
 import CheckoutProduct from "./CheckoutProduct";
 import Subtotal from "./Subtotal";
 import { useStateValue } from "../features/StateProvider";
-// import { TransitionGroup, CSSTransition } from "react-transition-group";
 // import FlipMove from "react-flip-move";
 
 function Checkout(props) {
