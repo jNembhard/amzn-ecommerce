@@ -83,10 +83,11 @@ function Login(props) {
 export default Login;
 
 const LoginWrap = styled.div`
-  background-color: white;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: white;
 `;
 
 const Container = styled.div`
@@ -137,6 +138,7 @@ const SignInButton = styled.button`
   border: 1px solid lightgray;
   margin-top: 10px;
   border-color: #a88734 #9c7e31 #846a29;
+  cursor: pointer;
 `;
 
 const RegisterButton = styled.button`
@@ -146,4 +148,5 @@ const RegisterButton = styled.button`
   border: 1px solid;
   margin-top: 10px;
   border-color: darkgray;
+  cursor: pointer;
 `;

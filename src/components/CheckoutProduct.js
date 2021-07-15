@@ -11,6 +11,7 @@ function CheckoutProduct(props) {
       id: props.id,
     });
   };
+
   return (
     <CheckoutProductContainer>
       <Image src={props.image} />
@@ -27,6 +28,7 @@ function CheckoutProduct(props) {
               <p>⭐</p>
             ))}
         </Rating>
+        {/* <button onClick={removeFromBasket}>Remove from Basket</button> */}
         <button onClick={removeFromBasket}>Remove from Basket</button>
       </Info>
     </CheckoutProductContainer>
@@ -56,6 +58,13 @@ const Info = styled.div`
     margin-top: 10px;
     border-color: #a88734 #9c7e31 #846a29;
     color: #111;
+    box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.12);
+    height: 20px;
+    width: 30%;
+    &:active {
+      transform: scale(0.98);
+      box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.12);
+    }
   }
 `;
 

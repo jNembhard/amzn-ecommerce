@@ -3,3 +3,31 @@ header__searchIcon {
   height: 22px !important;
   background-color: #cd9042;
 }
+.item {
+  position: relative;
+}
+.item-enter {
+  opacity: 0;
+}
+.item-enter-active {
+  opacity: 1;
+  transition: opacity 150ms ease-in;
+}
+.item-enter-active:first-child {
+  margin-top: -38px;
+}
+.item-exit {
+  opacity: 1;
+}
+.item-exit-active {
+  opacity: 0;
+  /* transition: opacity 500s ease-out; */
+  transition: opacity 500ms ease-in;
+}
+
+.grid-layout {
+  margin-top: 40px;
+  display: grid;
+  place-items: center;
+  grid-template-columns: 1fr 1fr 1fr;
+}

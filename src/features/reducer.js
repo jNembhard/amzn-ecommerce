@@ -11,9 +11,21 @@ const reducer = (state, action) => {
   console.log(action);
   switch (action.type) {
     case "ADD_TO_BASKET":
+      const basketIndex = state.basket.findIndex(
+        (basketItem) => basketItem.id === action.id
+      );
+
+      let newAddBasket = [...state.basket];
+
+      if (basketIndex === -1) {
+        newAddBasket.push(action.item);
+      } else {
+        newAddBasket[basketIndex].quantity += 1;
+        console.log(newAddBasket.quantity);
+      }
       return {
         ...state,
-        basket: [...state.basket, action.item],
+        basket: [...newAddBasket],
       };
 
     case "REMOVE_FROM_BASKET":
@@ -32,7 +44,7 @@ const reducer = (state, action) => {
       }
 
       return {
-        ...state,
+        state,
         basket: newBasket,
       };
 
@@ -43,7 +55,7 @@ const reducer = (state, action) => {
       };
 
     default:
-      return state;
+      return { ...state, basket: [...state.basket, action.item] };
   }
 };
 

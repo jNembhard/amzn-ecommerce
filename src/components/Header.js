@@ -29,7 +29,7 @@ function Header(props) {
       <HeaderNav>
         <Link to={!user && "/login"}>
           <HeaderOption onClick={handleAuthentication}>
-            <OptionLineOne>Hello Guest</OptionLineOne>
+            <OptionLineOne>{user ? user.email : "Hello Guest"}</OptionLineOne>
             <OptionLineTwo>{user ? "Sign Out" : "Sign In"}</OptionLineTwo>
           </HeaderOption>
         </Link>
@@ -64,6 +64,9 @@ const Heading = styled.div`
   position: sticky;
   top: 0;
   z-index: 100;
+  @media (max-width: 768px) {
+    max-width: fit-content;
+  }
 `;
 
 const HeaderLogo = styled.img`
@@ -78,7 +81,7 @@ HeaderLogo.defaultProps = {
 };
 
 const HeaderNav = styled.div`
-  display: flash;
+  display: flex;
   justify-content: space-evenly;
 `;
 
@@ -93,6 +96,9 @@ const HeaderSearchInput = styled.input`
   padding: 10px;
   border: none;
   width: 100%;
+  @media (max-width: 768px) {
+    width: 100vw;
+  }
 `;
 
 const HeaderOption = styled.div`

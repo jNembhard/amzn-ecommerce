@@ -129,6 +129,3 @@ firebase.json
 
 # build
 build/
-
-#firebase amazon file
-firebase.js

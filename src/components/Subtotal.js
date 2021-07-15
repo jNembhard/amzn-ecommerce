@@ -54,6 +54,7 @@ const Container = styled.div`
     margin-top: 10px;
     border-color: #a88734 #9c7e31 #846a29;
     color: #111;
+    cursor: pointer;
   }
 `;
 

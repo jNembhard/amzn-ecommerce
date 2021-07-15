@@ -70,6 +70,7 @@ function Home(props) {
               process.env.PUBLIC_URL + "/images/home_images/office_chair.jpg"
             }
             rating={5}
+            quantity={0}
           />
         </HomeRow>
       </HomeContainer>
@@ -92,6 +93,9 @@ const HomeRow = styled.div`
   z-index: 1;
   margin-left: 5px;
   margin-right: 5px;
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 const HomeContainer = styled.div``;
