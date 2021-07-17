@@ -92,6 +92,7 @@ function Payment() {
           <PayTitle>
             <h3>Delivery Address</h3>
           </PayTitle>
+
           <PayAddress>
             <p>{user?.email}</p>
             <p>123 Strawberry Lane</p>
@@ -161,6 +162,12 @@ const Container = styled.div`
   > h1 a {
     text-decoration: none;
   }
+
+  @media (max-width: 768px) {
+    > h1 {
+      font-size: 32px;
+    }
+  }
 `;
 
 const PaySection = styled.div`
@@ -168,10 +175,19 @@ const PaySection = styled.div`
   padding: 20px;
   margin: 0 20px;
   border-bottom: 1px solid lightgray;
+
+  @media (max-width: 768px) {
+    font-size: 18px;
+  }
 `;
 const PayTitle = styled.div`
   flex: 0.2;
+
+  @media (max-width: 768px) {
+    padding-right: 15px;
+  }
 `;
+
 const PayAddress = styled.div`
   flex: 0.8;
 `;

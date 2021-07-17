@@ -52,6 +52,10 @@ const Container = styled.div`
   padding: 20px;
   background-color: white;
   height: max-content;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 const LeftCheckout = styled.div`
   margin-left: 10px;

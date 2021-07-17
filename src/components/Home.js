@@ -18,15 +18,6 @@ function Home(props) {
             image={
               process.env.PUBLIC_URL + "/images/home_images/lean_startup.jpg"
             }
-            rating={4}
-          />
-          <Product
-            id="49538094"
-            title="SAMSUNG 65-Inch Class Crystal UHD AU8000 Series - 4K UHD HDR Smart TV with Alexa Built-in"
-            price={797.99}
-            image={
-              process.env.PUBLIC_URL + "/images/home_images/samsung_tv.jpg"
-            }
             rating={5}
           />
           <Product
@@ -37,7 +28,7 @@ function Home(props) {
               process.env.PUBLIC_URL +
               "/images/home_images/amazon_echo_studio.jpg"
             }
-            rating={4}
+            rating={5}
           />
         </HomeRow>
         <HomeRow>
@@ -51,9 +42,18 @@ function Home(props) {
             rating={3}
           />
           <Product
+            id="13029579"
+            title="Neo Chair Office Chair Computer Desk Chair Gaming - Ergonomic High Back Cushion Lumbar Support"
+            price={104.98}
+            image={
+              process.env.PUBLIC_URL + "/images/home_images/office_chair.jpg"
+            }
+            rating={5}
+          />
+          <Product
             id="57128520"
             title="SkyTech Blaze II Gaming Computer PC Desktop - Ryzen 5 3600 6-Core 3.6GHz, GTX 1660 Super 6G, 500G SSD, 16GB DDR4 3000, RGB, AC WiFi, Windows 10 Home 64-bit"
-            price={1109.0}
+            price={1109.99}
             image={
               process.env.PUBLIC_URL +
               "/images/home_images/skytech_computer.jpg"
@@ -61,16 +61,16 @@ function Home(props) {
             rating={5}
           />
         </HomeRow>
+
         <HomeRow>
           <Product
-            id="13029579"
-            title="SkyTech Blaze II Gaming Computer PC Desktop - Ryzen 5 3600 6-Core 3.6GHz, GTX 1660 Super 6G, 500G SSD, 16GB DDR4 3000, RGB, AC WiFi, Windows 10 Home 64-bit"
-            price={104.98}
+            id="49538094"
+            title="SAMSUNG 65-Inch Class Crystal UHD AU8000 Series - 4K UHD HDR Smart TV with Alexa Built-in"
+            price={797.99}
             image={
-              process.env.PUBLIC_URL + "/images/home_images/office_chair.jpg"
+              process.env.PUBLIC_URL + "/images/home_images/samsung_tv.jpg"
             }
-            rating={5}
-            quantity={0}
+            rating={4}
           />
         </HomeRow>
       </HomeContainer>
@@ -86,6 +86,10 @@ const HomeWrap = styled.div`
   margin-left: auto;
   margin-right: auto;
   max-width: 1500px;
+  @media (max-width: 768px) {
+    overflow: hidden;
+    padding-bottom: 20px;
+  }
 `;
 
 const HomeRow = styled.div`
@@ -95,6 +99,8 @@ const HomeRow = styled.div`
   margin-right: 5px;
   @media (max-width: 768px) {
     flex-direction: column;
+    align-items: center;
+    width: 100%;
   }
 `;
 
@@ -106,4 +112,7 @@ const HomeImg = styled.img`
   margin-bottom: -150px;
   /* creates fade from top to bottom*/
   mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+  @media (max-width: 768px) {
+    margin-bottom: -50px;
+  }
 `;

@@ -67,9 +67,9 @@ function Login(props) {
           </SignInButton>
 
           <p>
-            By signing in you agree to the AMAZON FAKE (Jason's E-Commerce Demo
-            Project) Conditions of Use & Sale. Please see our Privacy Notice,
-            and our Interest-Based Ads Notice.
+            By signing in you agree to the AMAZON FAKE (Jason's E-Commerce Demo)
+            Conditions of Use & Sale. Please see our Privacy Notice, and our
+            Interest-Based Ads Notice.
           </p>
           <RegisterButton onClick={register}>
             Create your Amazon Account

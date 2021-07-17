@@ -43,6 +43,26 @@ const CheckoutProductContainer = styled.div`
   display: flex;
   margin-top: 20px;
   margin-bottom: 20px;
+
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    min-height: 400px;
+    width: 80%;
+    padding: 10px;
+
+    > img {
+      width: 50%;
+      object-fit: contain;
+      margin-bottom: 5px;
+    }
+
+    > p {
+      font-size: 14px;
+    }
+  }
 `;
 
 const Image = styled.img`
@@ -69,11 +89,27 @@ const Info = styled.div`
       box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.12);
     }
   }
+
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: max-content;
+    padding-left: 0;
+
+    > button {
+      margin: 20px auto 0;
+    }
+  }
 `;
 
 const Title = styled.p`
   font-size: 17px;
   font-weight: 800;
+  @media (max-width: 768px) {
+    padding-bottom: 20px;
+    margin-left: auto;
+  }
 `;
 
 const Price = styled.p``;

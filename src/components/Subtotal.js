@@ -67,6 +67,10 @@ const Container = styled.div`
       box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.12);
     }
   }
+
+  @media (max-width: 768px) {
+    width: 90%;
+  }
 `;
 
 const SubtotalGift = styled.small`

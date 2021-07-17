@@ -49,5 +49,13 @@ const OrdersWrap = styled.div`
   > h1 {
     margin: 30px 0;
   }
+
+  @media (max-width: 768px) {
+    padding: 8px 55px;
+    > h1 {
+      font-size: 36px;
+      text-align: center;
+    }
+  }
 `;
 const OrdersOrder = styled.div``;
