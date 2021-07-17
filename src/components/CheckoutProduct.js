@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useStateValue } from "../features/StateProvider";
 
 function CheckoutProduct(props) {
+  // eslint-disable-next-line no-unused-vars
   const [{ basket }, dispatch] = useStateValue();
 
   const removeFromBasket = () => {
@@ -28,8 +29,9 @@ function CheckoutProduct(props) {
               <p>⭐</p>
             ))}
         </Rating>
-        {/* <button onClick={removeFromBasket}>Remove from Basket</button> */}
-        <button onClick={removeFromBasket}>Remove from Basket</button>
+        {!props.hideButton && (
+          <button onClick={removeFromBasket}>Remove from Basket</button>
+        )}
       </Info>
     </CheckoutProductContainer>
   );
@@ -61,6 +63,7 @@ const Info = styled.div`
     box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.12);
     height: 20px;
     width: 150px;
+    cursor: pointer;
     &:active {
       transform: scale(0.98);
       box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.12);

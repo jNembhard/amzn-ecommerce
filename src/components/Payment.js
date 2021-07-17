@@ -1,33 +1,37 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import styled from "styled-components";
 import { useStateValue } from "../features/StateProvider";
 import { getBasketTotal } from "../features/reducer";
 import CheckoutProduct from "./CheckoutProduct";
 import axios from "../axios";
-
-import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
+import { db } from "../firebase";
 import NumberFormat from "react-number-format";
+import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 
 function Payment() {
+  const history = useHistory();
   const [{ basket, user }, dispatch] = useStateValue();
 
   const stripe = useStripe();
   const elements = useElements();
 
-  const [succeeded, setSucceeded] = useState(false);
-  const [processing, setProcessing] = useState("");
+  // eslint-disable-next-line no-unused-vars
   const [error, setError] = useState(null);
   const [disabled, setDisabled] = useState(true);
+  const [succeeded, setSucceeded] = useState(false);
+  const [processing, setProcessing] = useState("");
   const [clientSecret, setClientSecret] = useState(true);
 
   useEffect(() => {
-    // stripe secret to charge customer
+    const floatToMinor = (x) => {
+      return Number.parseInt(Number.parseFloat(x * 100).toFixed(2));
+    };
     const getClientSecret = async () => {
       const response = await axios({
         method: "post",
         // Stripe expects total in currencies subunits
-        url: `/payments/create?total=${getBasketTotal(basket) * 100}`,
+        url: `/payments/create?total=${floatToMinor(getBasketTotal(basket))}`,
       });
       setClientSecret(response.data.clientSecret);
     };
@@ -37,9 +41,39 @@ function Payment() {
   const handleSubmit = async (event) => {
     // refresh and block after clicking buy now once
     event.preventDefault();
-    setProcessing(true);
+    try {
+      setProcessing(true);
 
-    // const payload = await stripe
+      // eslint-disable-next-line no-unused-vars
+      const payload = await stripe
+        .confirmCardPayment(clientSecret, {
+          payment_method: {
+            card: elements.getElement(CardElement),
+          },
+        })
+        .then(({ paymentIntent }) => {
+          db.collection("users")
+            .doc(user?.uid)
+            .collection("orders")
+            .doc(paymentIntent.id)
+            .set({
+              basket: basket,
+              amount: paymentIntent.amount,
+              created: paymentIntent.created,
+            });
+
+          setSucceeded(true);
+          setError(null);
+          setProcessing(false);
+
+          history.replace("/orders");
+          dispatch({
+            type: "EMPTY_BASKET",
+          });
+        });
+    } catch (error) {
+      console.log("Payment failed");
+    }
   };
 
   const handleChange = (event) => {
@@ -53,7 +87,7 @@ function Payment() {
         <h1>
           Checkout: (<Link to="/checkout">{basket?.length} items</Link>)
         </h1>
-        {/* Payment Section - delivery address */}
+
         <PaySection>
           <PayTitle>
             <h3>Delivery Address</h3>
@@ -65,7 +99,6 @@ function Payment() {
           </PayAddress>
         </PaySection>
 
-        {/* Payment Section - review items*/}
         <PaySection>
           <PayTitle>
             <h3>Review items and delivery</h3>
@@ -73,7 +106,6 @@ function Payment() {
           <PayItems>
             {basket.map((item) => (
               <CheckoutProduct
-                key={item.id}
                 id={item.id}
                 title={item.title}
                 image={item.image}
@@ -84,21 +116,19 @@ function Payment() {
           </PayItems>
         </PaySection>
 
-        {/* Payment Section - payment method*/}
         <PaySection>
           <PayTitle>
             <h3>Payment Method</h3>
           </PayTitle>
           <PayDetails>
-            {/* Stripe Details */}
             <form onSubmit={handleSubmit}>
               <CardElement onChange={handleChange} />
               <PriceContainer>
                 <NumberFormat
-                  renderText={(value) => <h3>Order Total: {value}</h3>}
+                  renderText={(value) => <h4>Order Total: {value}</h4>}
                   decimalScale={2}
                   value={getBasketTotal(basket)}
-                  displayType="text"
+                  displayType={"text"}
                   thousandSeparator={true}
                   prefix={"$"}
                 />
@@ -150,6 +180,33 @@ const PayItems = styled.div`
 `;
 const PayDetails = styled.div`
   flex: 0.8;
+
+  > form {
+    max-width: 400px;
+  }
+
+  > h4 {
+    padding-bottom: 20px;
+  }
+
+  > form > div > button {
+    background: #f0c14b;
+    border-radius: 2px;
+    width: 100%;
+    height: 30px;
+    border: 1px solid;
+    font-weight: bolder;
+    margin-top: 10px;
+    border-color: #a88734 #9c7e31 #846a29;
+    color: #111;
+    cursor: pointer;
+    box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.12);
+
+    &:active {
+      transform: scale(0.98);
+      box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.12);
+    }
+  }
 `;
 
 const PriceContainer = styled.div``;

@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 // title, image, price, rating
 function Product(props) {
+  // eslint-disable-next-line no-unused-vars
   const [{ basket }, dispatch] = useStateValue();
 
   // console.log("This is the basket -> ", basket);

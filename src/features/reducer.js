@@ -8,24 +8,18 @@ export const getBasketTotal = (basket) =>
   basket?.reduce((amount, item) => item.price + amount, 0);
 
 const reducer = (state, action) => {
-  console.log(action);
+  // console.log(action);
   switch (action.type) {
     case "ADD_TO_BASKET":
-      const basketIndex = state.basket.findIndex(
-        (basketItem) => basketItem.id === action.id
-      );
-
-      let newAddBasket = [...state.basket];
-
-      if (basketIndex === -1) {
-        newAddBasket.push(action.item);
-      } else {
-        newAddBasket[basketIndex].quantity += 1;
-        console.log(newAddBasket.quantity);
-      }
       return {
         ...state,
-        basket: [...newAddBasket],
+        basket: [...state.basket, action.item],
+      };
+
+    case "EMPTY_BASKET":
+      return {
+        ...state,
+        basket: [],
       };
 
     case "REMOVE_FROM_BASKET":
@@ -55,8 +49,10 @@ const reducer = (state, action) => {
       };
 
     default:
-      return { ...state, basket: [...state.basket, action.item] };
+      return state;
   }
 };
 
 export default reducer;
+
+// { ...state, basket: [...state.basket, action.item] }

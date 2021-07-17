@@ -139,6 +139,12 @@ const SignInButton = styled.button`
   margin-top: 10px;
   border-color: #a88734 #9c7e31 #846a29;
   cursor: pointer;
+  box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.12);
+
+  &:active {
+    transform: scale(0.98);
+    box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.12);
+  }
 `;
 
 const RegisterButton = styled.button`
@@ -149,4 +155,10 @@ const RegisterButton = styled.button`
   margin-top: 10px;
   border-color: darkgray;
   cursor: pointer;
+  box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.12);
+
+  &:active {
+    transform: scale(0.98);
+    box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.12);
+  }
 `;

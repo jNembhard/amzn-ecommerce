@@ -6,11 +6,11 @@ import { useStateValue } from "../features/StateProvider";
 // import FlipMove from "react-flip-move";
 
 function Checkout(props) {
+  // eslint-disable-next-line no-unused-vars
   const [{ basket, user }, dispatch] = useStateValue();
 
   return (
     <Container>
-      s
       <LeftCheckout>
         <BannerImage
           src={
@@ -26,7 +26,7 @@ function Checkout(props) {
             {/* <FlipMove easing="ease-in" duration={500}> */}
             {basket.map((item) => (
               <CheckoutProduct
-                key={item.id}
+                // key={item.id}
                 id={item.id}
                 title={item.title}
                 image={item.image}

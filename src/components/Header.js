@@ -7,6 +7,7 @@ import { useStateValue } from "../features/StateProvider";
 import { auth } from "../firebase";
 
 function Header(props) {
+  // eslint-disable-next-line no-unused-vars
   const [{ basket, user }, dispatch] = useStateValue();
 
   const handleAuthentication = () => {
@@ -27,23 +28,27 @@ function Header(props) {
       </HeaderSearch>
 
       <HeaderNav>
-        <Link to={!user && "/login"}>
+        <Link to={!user && "/login"} style={{ textDecoration: "none" }}>
           <HeaderOption onClick={handleAuthentication}>
-            <OptionLineOne>{user ? user.email : "Hello Guest"}</OptionLineOne>
+            <OptionLineOne>
+              {user ? "Hello " + user.email : "Hello Guest"}
+            </OptionLineOne>
             <OptionLineTwo>{user ? "Sign Out" : "Sign In"}</OptionLineTwo>
           </HeaderOption>
         </Link>
 
-        <HeaderOption>
-          <OptionLineOne>Returns</OptionLineOne>
-          <OptionLineTwo>& Orders</OptionLineTwo>
-        </HeaderOption>
+        <Link to="/orders" style={{ textDecoration: "none" }}>
+          <HeaderOption>
+            <OptionLineOne>Returns</OptionLineOne>
+            <OptionLineTwo>& Orders</OptionLineTwo>
+          </HeaderOption>
+        </Link>
 
         <HeaderOption>
           <OptionLineOne>Your</OptionLineOne>
           <OptionLineTwo>Prime</OptionLineTwo>
         </HeaderOption>
-        <Link to="/checkout">
+        <Link to="/checkout" style={{ textDecoration: "none" }}>
           <HeaderOptionBasket>
             <ShoppingBasketIcon />
             <HeaderBasketCount>{basket?.length}</HeaderBasketCount>
@@ -110,6 +115,7 @@ const HeaderOption = styled.div`
 `;
 const OptionLineOne = styled.span`
   font-size: 10px;
+  text-decoration: none;
 `;
 const OptionLineTwo = styled(OptionLineOne)`
   font-size: 13px;
