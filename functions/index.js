@@ -4,10 +4,7 @@ require("dotenv").config({ path: path.resolve(__dirname, "../.env") });
 const functions = require("firebase-functions");
 const express = require("express");
 const cors = require("cors");
-
-const stripe = require("stripe")(process.env.REACT_APP_STRIPE_SECRET_KEY);
-
-// API
+const stripe = require("stripe")(process.env.REACT_APP_STRIPE_SECRET);
 
 // App config
 const app = express();

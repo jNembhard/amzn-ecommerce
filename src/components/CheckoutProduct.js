@@ -78,6 +78,7 @@ const Info = styled.div`
     background: #f0c14b;
     border: 1px solid #dddddd;
     margin-top: 10px;
+    min-height: 1.6rem;
     border-color: #a88734 #9c7e31 #846a29;
     color: #111;
     box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.12);
