@@ -23,7 +23,7 @@ function Header(props) {
           <HeaderLogo />
         </Link>
         <HeaderSearch>
-          <HeaderSearchInput type="text" />
+          <HeaderSearchInput type="text" aria-label="Header Search" />
           <HSearchIcon />
         </HeaderSearch>
       </HeaderFirstContainer>
@@ -111,6 +111,7 @@ const HeaderLogo = styled.img`
 
 HeaderLogo.defaultProps = {
   src: "https://pngimg.com/uploads/amazon/amazon_PNG11.png",
+  alt: "Amzon Logo",
 };
 
 const HeaderNav = styled.div`

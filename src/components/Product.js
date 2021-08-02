@@ -37,7 +37,7 @@ function Product(props) {
             ))}
         </ProductRating>
       </ProductInfo>
-      <img src={props.image} alt={`${props.image}`} />
+      <img src={props.image} alt="Homepage Products" />
       <button onClick={addToBasket}>Add to basket</button>
     </ProductWrap>
   );
