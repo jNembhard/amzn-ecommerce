@@ -3,7 +3,6 @@ import styled from "styled-components";
 import CheckoutProduct from "./CheckoutProduct";
 import Subtotal from "./Subtotal";
 import { useStateValue } from "../features/StateProvider";
-// import FlipMove from "react-flip-move";
 
 function Checkout(props) {
   // eslint-disable-next-line no-unused-vars
@@ -23,10 +22,8 @@ function Checkout(props) {
           <h3>Hello, {user?.email}</h3>
           <H2Title>Your Shopping Basket</H2Title>
           <BasketCard>
-            {/* <FlipMove easing="ease-in" duration={500}> */}
             {basket.map((item) => (
               <CheckoutProduct
-                // key={item.id}
                 id={item.id}
                 title={item.title}
                 image={item.image}
@@ -34,7 +31,6 @@ function Checkout(props) {
                 rating={item.rating}
               />
             ))}
-            {/* </FlipMove> */}
           </BasketCard>
         </div>
       </LeftCheckout>
