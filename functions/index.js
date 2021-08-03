@@ -1,6 +1,6 @@
+/* eslint-disable indent */
 /* eslint object-curly-spacing: ["error", "always"] */
-const path = require("path");
-require("dotenv").config({ path: path.resolve(__dirname, "../.env") });
+require("dotenv").config();
 const functions = require("firebase-functions");
 const express = require("express");
 const cors = require("cors");
